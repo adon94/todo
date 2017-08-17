@@ -16,8 +16,8 @@ let nextTodoId = 0;
 export function addTodo(text) {
     return {
         type: ADD_TODO,
-        id: nextTodoId++,
-        text
+        payload: text
+
     }
 }
 
@@ -45,14 +45,13 @@ export function editTodo(todo, index){
 export default function ToDoStateReducer(state = initialState, action) {
     switch(action.type) {
         case ADD_TODO: {
-            return [
+            return {
                 ...state,
-                {
-                    id: action.id,
-                    text: action.text
-                }
-            ]
-
+                
+                    todoState: state.todoState.concat(action.payload),
+                
+            
+            }
         }
         default: {
             return state

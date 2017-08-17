@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {
     Text,
     View,
+    TextInput,
+    Button
 } from 'react-native';
 
 
@@ -9,20 +11,25 @@ export default class ToDoView extends Component {
 
     constructor(props) {
         super(props);
+        const textValue = undefined;
 
-        console.log(props)
+        
 
     }
 
-    componentWillMount = () => {
-        
+
+    addTodo = (text) => {
+        this.props.addTodo(text)
     }
 
 
     render() {
         return(
             <View>
-                <Text>Hello</Text>
+
+                <Text>Herllo</Text>
+
+                    
             </View>
         )
     }
