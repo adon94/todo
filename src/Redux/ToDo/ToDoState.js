@@ -16,12 +16,14 @@ let nextTodoId = 0;
 export function addTodo(text) {
     return {
         type: ADD_TODO,
-        id: nextTodoId++,
-        text
+        payload: {
+            id: nextTodoId++,
+            text
+        }
     }
 }
 
-export function removeTodo(todo, index){
+export function removeTodo(todo, index) {
     return {
         type: REMOVE_TODO,
         payload: {
@@ -31,7 +33,7 @@ export function removeTodo(todo, index){
     }
 }
 
-export function editTodo(todo, index){
+export function editTodo(todo, index) {
     return {
         type: EDIT_TODO,
         payload: {
@@ -43,7 +45,7 @@ export function editTodo(todo, index){
 
 
 export default function ToDoStateReducer(state = initialState, action) {
-    switch(action.type) {
+    switch (action.type) {
         case ADD_TODO: {
             return [
                 ...state,
@@ -56,12 +58,12 @@ export default function ToDoStateReducer(state = initialState, action) {
         }
         default: {
             return state
-            
+
         }
 
     }
 
-  
+
 
 }
-  
+

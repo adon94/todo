@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { registerScreens } from './RegisterScreens';
 import  store  from './Redux/Store';
-import ToDoView from './modules/ToDo/ToDoView';
 import reducer from './Redux/Reducer'
 
 registerScreens();
