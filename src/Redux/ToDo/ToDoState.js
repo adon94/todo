@@ -47,7 +47,7 @@ export default function ToDoStateReducer(state = initialState, action) {
         case ADD_TODO: {
             return {
                 ...state,
-                
+            
                     todoState: state.todoState.concat(action.payload),
                 
             
