@@ -39,13 +39,6 @@ export default class ToDoView extends Component {
                     title="Add a todo"
                     onPress={() => this.addTodo()} />
                     <Text>{this.props.todoState}</Text>
-                <TextInput ref="newItem"
-                value ={ this.state.newItem }
-                onChangeText = {(newItem) => this.setState({newItem})}></TextInput>
-                <Text>Herllo</Text>
-            <Text>{JSON.stringify(this.props.todoState)}</Text>
-            <Button title="Add to state" onPress={() => this.addTodo()}></Button>
-                    
             </View>
         )
     }
