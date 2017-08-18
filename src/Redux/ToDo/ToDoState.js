@@ -13,7 +13,11 @@ const initialState = ToDoState();
 
 let nextTodoId = 0;
 
+<<<<<<< HEAD
 export function addTodoLAter(text) {
+=======
+export function addTodoNow(text) {
+>>>>>>> Git tut
     return {
         type: ADD_TODO,
         payload: text
