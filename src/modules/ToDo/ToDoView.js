@@ -12,24 +12,29 @@ export default class ToDoView extends Component {
     constructor(props) {
         super(props);
         const textValue = undefined;
+        // this.addTodo("TODOTEST");
 
-        
-
+        console.log(this.props)
     }
 
 
-    addTodo = (text) => {
-        this.props.addTodo(text)
+    addTodo = () => {
+        this.props.addTodo(this.state.newItem)
+        this.state.newItem = "";
+        console.log(this.props);
     }
 
 
     render() {
-        return(
+        return (
             <View>
 
-                <Text>Herllo</Text>
-
-                    
+                <TextInput placeholder="Add item"
+                    onChangeText={(newItem) => this.setState({ newItem })} />
+                <Button
+                    title="Add a todo"
+                    onPress={() => this.addTodo()} />
+                    <Text>{this.props.todoState}</Text>
             </View>
         )
     }

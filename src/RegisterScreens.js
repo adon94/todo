@@ -4,8 +4,6 @@ import ToDoView from './modules/ToDo/ToDoViewContainer';
 import store from './Redux/Store';
 import { Provider } from 'react-redux';
 
-
-
 export function registerScreens() {
 		Navigation.registerComponent('app.ToDoView', () => ToDoView, store, Provider);
 }

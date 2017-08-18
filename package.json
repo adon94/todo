@@ -10,7 +10,7 @@
 	"dependencies": {
 		"react": "16.0.0-alpha.12",
 		"react-native": "0.47.1",
-		"react-native-navigation": "^1.1.198",
+		"react-native-navigation": "1.1.197",
 		"react-redux": "^5.0.6",
 		"redux": "^3.7.2",
 		"redux-remotedev": "^0.3.0",
