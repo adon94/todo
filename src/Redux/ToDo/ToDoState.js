@@ -5,39 +5,36 @@ export const EDIT_TODO = "EDIT_TODO"
 
 
 const ToDoState = () => ({
-
-    todoState: []
+    todoState: [],
+    editTodoState: {}
 })
 
 const initialState = ToDoState();
 
-let nextTodoId = 0;
+var nextTodoId = -1;
 
 export function addTodo(text) {
+    nextTodoId = nextTodoId+1;
     return {
         type: ADD_TODO,
-        id: nextTodoId++,
-        text
+        payload: {
+            text:text,
+            id: nextTodoId
+        }
     }
 }
 
-export function removeTodo(todo, index){
+export function removeTodo(index){
     return {
         type: REMOVE_TODO,
-        payload: {
-            todo,
-            index
-        }
+        payload: index
     }
 }
 
-export function editTodo(todo, index){
+export function editTodo(todo){
     return {
         type: EDIT_TODO,
-        payload: {
-            todo,
-            index
-        }
+        payload: todo
     }
 }
 
@@ -45,14 +42,26 @@ export function editTodo(todo, index){
 export default function ToDoStateReducer(state = initialState, action) {
     switch(action.type) {
         case ADD_TODO: {
-            return [
+            console.log(action.payload);
+            return{
                 ...state,
-                {
-                    id: action.id,
-                    text: action.text
-                }
-            ]
+                todoState: state.todoState.concat(action.payload)
+            }
 
+        }
+        case REMOVE_TODO: {
+            console.log(action.payload);
+            return{
+                ...state,
+                todoState: state.todoState.filter(({ id }) => id !== action.payload)
+                
+            }
+        }
+        case EDIT_TODO: {
+            return{
+                ...state,
+                editTodoState: action.payload
+            }
         }
         default: {
             return state
