@@ -13,7 +13,7 @@ const initialState = ToDoState();
 
 let nextTodoId = 0;
 
-export function addTodo(text) {
+export function addTodoNow(text) {
     return {
         type: ADD_TODO,
         payload: text
