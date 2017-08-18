@@ -13,7 +13,7 @@ const initialState = ToDoState();
 
 let nextTodoId = 0;
 
-export function addTodoNow(text) {
+export function addTodo(text) {
     return {
         type: ADD_TODO,
         payload: text
@@ -47,14 +47,7 @@ export default function ToDoStateReducer(state = initialState, action) {
         case ADD_TODO: {
             return {
                 ...state,
-<<<<<<< HEAD
                 todoState: state.todoState.concat(action.payload)
-=======
-            
-                    todoState: state.todoState.concat(action.payload),
-                
-            
->>>>>>> 9f38dea1a82ef363b988225c5424712290337dd3
             }
         }
         default: {

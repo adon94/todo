@@ -3,7 +3,13 @@ import {
     Text,
     View,
     TextInput,
-    Button
+    Button,
+    FlatList,
+    ListItem,
+    List,
+    Alert,
+    ScrollView,
+    TouchableHighlight
 } from 'react-native';
 
 
@@ -13,6 +19,7 @@ export default class ToDoView extends Component {
         super(props);
         const textValue = undefined;
         // this.addTodo("TODOTEST");
+
         this.state = {
             newItem: ''
           }
@@ -28,24 +35,40 @@ export default class ToDoView extends Component {
         console.log(this.props.todoState)
     }
 
+    // onRemove={() => this._remove(rowData.id)}
+
+    renderSeparator = () => {
+        return (
+          <View
+            style={{
+              height: 1,
+              width: "100%",
+            }}
+          />
+        );
+      };
+
+      renderItem = ({item}) => (
+        // <TouchableHighlight onPress={()=>{this.removeTodo(item.id)}} underlayColor="white">
+            <View><Text>{item}</Text></View>
+        // </TouchableHighlight>
+      );
 
     render() {
         return (
             <View>
-
-                <TextInput placeholder="Add item"
-                    onChangeText={(newItem) => this.setState({ newItem })} />
-                <Button
-                    title="Add a todo"
-                    onPress={() => this.addTodo()} />
-                    <Text>{this.props.todoState}</Text>
-                <TextInput ref="newItem"
+                <TextInput placeholder="Put it in me" ref="newItem"
                 value ={ this.state.newItem }
                 onChangeText = {(newItem) => this.setState({newItem})}></TextInput>
-                <Text>Herllo</Text>
-            <Text>{JSON.stringify(this.props.todoState)}</Text>
             <Button title="Add to state" onPress={() => this.addTodo()}></Button>
-                    
+            <ScrollView>
+            <FlatList
+                data={this.props.todoState}
+                renderItem={this.renderItem}
+                ItemSeparatorComponent={this.renderSeparator}
+                keyExtractor={item => item.id}//must assign the unique id of the item                    
+            />
+            </ScrollView>
             </View>
         )
     }
