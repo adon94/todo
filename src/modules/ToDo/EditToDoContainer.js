@@ -1,9 +1,8 @@
 import  { connect } from 'react-redux';
 import EditToDoView from './EditToDoView';
 import {
-    addTodo,
     removeTodo,
-    editTodo
+    submitEditTodo
  } from '../../Redux/ToDo/ToDoState';
 
 export default connect(
@@ -11,8 +10,7 @@ export default connect(
         ...state.todoState
     }),
     dispatch => ({
-        addTodo: (text) => dispatch(addTodo(text)),
         removeTodo: (index) => dispatch(removeTodo(index)),
-        editTodo: (todo) => dispatch(editTodo(todo))
+        submitEditTodo: (todo) => dispatch(submitEditTodo(todo))
     })
 )(EditToDoView)
