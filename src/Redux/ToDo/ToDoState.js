@@ -1,3 +1,4 @@
+import { loop, cmd} from 'redux-loop'
 
 export const ADD_TODO = "ADD_TODO"
 export const REMOVE_TODO = "REMOVE_TODO"
@@ -51,7 +52,6 @@ export default function ToDoStateReducer(state = initialState, action) {
             return {
                 ...state,
                 todoState: state.todoState.filter(({ id }) => id !== action.payload)
-
             }
         }
         default: {
