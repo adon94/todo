@@ -1,3 +1,6 @@
+import { loop, Cmd } from 'redux-loop';
+import { push } from './NavigationStateUtils'
+
 const NavigationState = () => ({
     navigationState: []
 })
@@ -25,15 +28,11 @@ export function navigatePush(props, screenId, title, todo) {
 export default function NavigationStateReducer(state = initialState, action) {
     switch (action.type) {
         case "NAV_PUSH": {
-            console.log(action.payload)
-            return {
-                ...state,
-                navigationState: action.payload.props.navigator.push({
-                    screen: action.payload.screenId,
-                    title: action.payload.title,
-                    passProps: {todo: action.payload.todo}
-                })
-            }
+            console.log("NAV_PUSH")
+            return loop(
+                { ...state },
+                Cmd.run( push, { args: [action.payload] } )
+            )
         }
         default: {
             return state
