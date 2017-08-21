@@ -25,16 +25,17 @@ export default class ItemView extends Component {
         console.log(props)
     }
 
-    displayMessage = () => {
-        console.log("Message Displayed")
+    popNavigation = () => {
+        this.props.return(this.props)
+        console.log("nav popped")
     }
 
     render() {
         return(
             <View>
                 <Text>{this.props.todo.text}</Text>
-                <Button title="Display Message"
-                onPress={this.displayMessage}/>  
+                <Button title="Return"
+                onPress={this.popNavigation}/>  
             </View>
         )
     }

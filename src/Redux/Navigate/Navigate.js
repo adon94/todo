@@ -8,8 +8,7 @@ export function pushNav(payload){
     })
 }
 
-// navigationState: payload.props.navigator.push({
-//     screen: payload.screenId,
-//     title: payload.title,
-//     passProps: {todo: payload.todo}
-// })
+export function popNav(props){
+    console.log("pop nav")
+    props.navigator.pop()
+}
