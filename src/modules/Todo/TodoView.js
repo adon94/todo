@@ -11,7 +11,7 @@ import {
     ScrollView,
     TouchableHighlight
 } from 'react-native';
-
+import NavigationState from '../../Redux/Navigation/NavigationState'
 
 export default class ToDoView extends Component {
 
@@ -35,7 +35,10 @@ export default class ToDoView extends Component {
         console.log(this.props.todoState)
     }
 
-    // onRemove={() => this._remove(rowData.id)}
+    removeTodo = (id) => {
+        console.log("id of item removed "+id)
+        this.props.removeTodo(id);
+    }
 
     renderSeparator = () => {
         return (
@@ -48,15 +51,20 @@ export default class ToDoView extends Component {
         );
       };
 
+      navigatePush = () => {
+          NavigatorState.navigatePush(this.props, )
+      }
+
       renderItem = ({item}) => (
-        // <TouchableHighlight onPress={()=>{this.removeTodo(item.id)}} underlayColor="white">
+        <TouchableHighlight onPress={()=>this.removeTodo(item.id)} underlayColor="white">
             <View><Text>{item}</Text></View>
-        // </TouchableHighlight>
+        </TouchableHighlight>
       );
 
     render() {
         return (
             <View>
+                <Button title="NAVIGATE BITCH" onPress={() => this.navigationPush()}></Button>
                 <TextInput placeholder="Put it in me" ref="newItem"
                 value ={ this.state.newItem }
                 onChangeText = {(newItem) => this.setState({newItem})}></TextInput>
@@ -73,6 +81,3 @@ export default class ToDoView extends Component {
         )
     }
 }
-
-
-

@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import ToDoStateReducer from './ToDo/ToDoState';
+
 import UserState from './User/UserState';
 import NavigationState from './Navigation/NavigationState'
+import ToDoStateReducer from './ToDo/ToDoState'
 
 const reducers = {
-    todoState: ToDoStateReducer
+    todoState: ToDoStateReducer,
+    navigationState : NavigationState
 };
 
 const namespacedReducer = combineReducers(

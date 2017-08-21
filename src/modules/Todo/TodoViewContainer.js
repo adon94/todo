@@ -1,14 +1,16 @@
 import  { connect } from 'react-redux';
 import ToDoView from './ToDoView';
 import {
-    addTodo
+    addTodo,
+    removeTodo
  } from '../../Redux/ToDo/ToDoState'
 
 export default connect(
-    (state, props) => ({
+    (state) => ({
         ...state.todoState
     }),
-    (dispatch, props) => ({
-        addTodo: (text) => {dispatch(addTodo(text))}
+    (dispatch) => ({
+        addTodo: text => dispatch(addTodo(text)),
+        removeTodo: id => dispatch(removeTodo(id))
     })
 )(ToDoView)
