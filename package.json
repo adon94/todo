@@ -13,14 +13,16 @@
 		"react-native-navigation": "1.1.197",
 		"react-redux": "^5.0.6",
 		"redux": "^3.7.2",
+		"redux-loop": "^3.1.2",
+		"redux-promise": "^0.5.3",
 		"redux-remotedev": "^0.3.0",
 		"yarn": "^0.27.5"
 	},
 	"devDependencies": {
-		"babel-jest": "20.0.3", 
+		"babel-jest": "20.0.3",
 		"jest": "20.0.4",
-		"remote-redux-devtools": "0.5.0",
-		"react-test-renderer": "16.0.0-alpha.12"
+		"react-test-renderer": "16.0.0-alpha.12",
+		"remote-redux-devtools": "0.5.0"
 	},
 	"jest": {
 		"preset": "react-native"

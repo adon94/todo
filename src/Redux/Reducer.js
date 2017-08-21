@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux-loop';
 import ToDoStateReducer from './ToDo/ToDoState';
 import UserState from './User/UserState';
 import NavigationStateReducer from './Navigation/NavigationState'
