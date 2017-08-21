@@ -25,11 +25,16 @@ export default class ItemView extends Component {
         console.log(props)
     }
 
+    displayMessage = () => {
+        console.log("Message Displayed")
+    }
+
     render() {
         return(
             <View>
                 <Text>{this.props.todo.text}</Text>
-                <Button title="Save Edit"/>  
+                <Button title="Display Message"
+                onPress={this.displayMessage}/>  
             </View>
         )
     }

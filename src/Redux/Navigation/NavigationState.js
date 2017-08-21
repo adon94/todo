@@ -30,10 +30,8 @@ export default function NavigationStateReducer(state = initialState, action) {
         case "NAV_PUSH": 
             console.log(action.payload)
             return loop(
-                {
-                ...state},
-            Cmd.run(pushNav, {args: [action.payload.props, action.payload.screenId, 
-            action.payload.todo]
+                {...state},
+            Cmd.run(pushNav, {args: [action.payload]
         })
     )
         default: {
