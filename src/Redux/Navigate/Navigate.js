@@ -3,8 +3,7 @@ export function pushNav(payload){
     console.log(payload.props)
     payload.props.navigator.push({
         screen: payload.screenId,
-        title: payload.title,
-        passProps: {todo: payload.todo}
+        title: payload.title
     })
 }
 

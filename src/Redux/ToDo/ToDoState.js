@@ -6,7 +6,8 @@ export const EDIT_TODO = "EDIT_TODO"
 
 
 const ToDoState = () => ({
-    todoState: []
+    todoState: [],
+    editTodoState: {}
 })
 
 const initialState = ToDoState();
@@ -32,7 +33,7 @@ export function removeTodo(index) {
     }
 }
 
-export function editTodo(todo, index) {
+export function editTodo(todo) {
     return {
         type: EDIT_TODO,
         payload: todo
@@ -54,6 +55,19 @@ export default function ToDoStateReducer(state = initialState, action) {
                 todoState: state.todoState.filter(({ id }) => id !== action.payload)
             }
         }
+        case EDIT_TODO: {
+            console.log("inside edit todo "+action.payload);
+            return {
+                ...state,
+                editTodoState: action.payload
+            }
+        }
+        // case EDIT_TODO: {
+        //     return {
+        //         ...state,
+        //         todoState: state.todoState
+        //     }
+        // }
         default: {
             return state
         }

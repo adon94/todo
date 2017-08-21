@@ -7,14 +7,13 @@ const NavigationState = () => ({
 
 const initialState = NavigationState();
 
-export function navigatePush(props, screenId, title, todo) {
+export function navigatePush(props, screenId, title) {
     return {
         type: "NAV_PUSH",
         payload: {
             props: props,
             screenId: screenId,
-            title: title,
-            todo: todo
+            title: title
         }
     }
 }
