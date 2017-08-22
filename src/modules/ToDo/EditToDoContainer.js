@@ -1,11 +1,10 @@
 import  { connect } from 'react-redux';
-import ToDoView from './ToDoView';
+import EditToDoView from './EditToDoView';
 import {
     addTodo,
     removeTodo,
     editTodo
- } from '../../Redux/ToDo/ToDoState'
- import { navigatePush } from '../../Redux/Navigation/NavigationState'
+ } from '../../Redux/ToDo/ToDoState';
 
 export default connect(
     (state, props) => ({
@@ -14,6 +13,6 @@ export default connect(
     dispatch => ({
         addTodo: (text) => dispatch(addTodo(text)),
         removeTodo: (index) => dispatch(removeTodo(index)),
-        editTodo: (todo) => dispatch(editTodo(todo))        
+        editTodo: (todo) => dispatch(editTodo(todo))
     })
-)(ToDoView)
+)(EditToDoView)
