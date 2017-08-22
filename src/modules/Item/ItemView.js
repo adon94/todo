@@ -15,21 +15,18 @@ import {
 
 export default class ItemView extends Component {
 
-
-
     constructor(props) {
         super(props);
         this.state = {
             todoText: props.editTodoState.text
         }
-        console.log(props)
         console.log(props.editTodoState)
-        //console.log(props.todoState.text)
-        //console.log(this.state.todoText)
+        console.log("Todo text: "+this.state.todoText)
     }
 
     editInput = (text) => {
         console.log("edited text: "+text)
+        console.log("edited state: "+this.state.todoText)
         this.setState({
             todoText: text
         })
@@ -43,7 +40,7 @@ export default class ItemView extends Component {
     submitEdit = () => {
         console.log(this.state.todoText);
         var edited = {
-            id: this.props.todo.id,
+            id: this.props.editTodoState.id,
             text: this.state.todoText
         }
         this.props.submitEdit(edited)
@@ -57,7 +54,7 @@ export default class ItemView extends Component {
     render() {
         return(
             <View>
-                <TextInput placeholder="Edit todo" onChange={this.editInput} defaultValue={this.state.todoText}/>          
+                <TextInput placeholder="Edit todo" onChangeText={this.editInput} defaultValue={this.state.todoText}/>          
                 <Button title="Save Edit" onPress={this.submitEdit}/>  
                 <Button title="Delete" onPress={this.removeTodo}/>  
                 <Button title="Return"

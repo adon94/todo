@@ -1,8 +1,12 @@
 import { pushNav, popNav } from '../Navigate/Navigate'
 import { loop, Cmd } from 'redux-loop'
+import * as constants from '../../const'
+
 
 const NavigationState = () => ({
-    navigationState: []
+    navigationState: [],
+    //currentScreen: undefined
+    key: constants
 })
 
 const initialState = NavigationState();
@@ -30,9 +34,13 @@ export function navigatePop(props) {
 export default function NavigationStateReducer(state = initialState, action) {
     switch (action.type) {
         case "NAV_PUSH": 
+        //if(currentScreen === action.payload.screenId) return state;
             console.log(action.payload)
             return loop(
-                {...state},
+                {...state,
+                    navigationState: state.navigationState.currentScreen === action.payload.screenId,
+                   // currentScreen: action.payload.props.testId
+            },
             Cmd.run(pushNav, {args: [action.payload]
         })
     )
