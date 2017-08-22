@@ -70,7 +70,7 @@ export default class ToDoView extends Component {
     renderItem = ({item}) => (
         //
         <TouchableHighlight onPress={()=>{this.editItem(item)}} underlayColor="white">
-            <View style={{flex: 1, flexDirection:"row", padding:10}}><View style={{flex: 3}}><Text>{item.text} {item.id}</Text></View><View style={{flex:1}}><Button width="" title="Remove" onPress={()=>{this.removeTodo(item.id)}}/></View></View>
+            <View style={{flex: 1, flexDirection:"row", padding:10}}><View style={{flex: 3}}><Text>{item.text}</Text></View><View style={{flex:1}}><Button width="" title="Remove" onPress={()=>{this.removeTodo(item.id)}}/></View></View>
         </TouchableHighlight>
       );
 
@@ -90,7 +90,7 @@ export default class ToDoView extends Component {
                     data={this.props.todoState}
                     renderItem={this.renderItem}
                     ItemSeparatorComponent={this.renderSeparator}
-                    keyExtractor={item => item.id}//must assign the unique id of the item                    
+                    keyExtractor={item=>item.id}//must assign the unique id of the item                    
                 />
                 </ScrollView>
                 </View>         

@@ -4,29 +4,30 @@ export const REMOVE_TODO = "REMOVE_TODO"
 export const EDIT_TODO = "EDIT_TODO"
 export const SUBMIT_TODO = "SUBMIT_TODO"
 
+import randIdGen from '../../utils/randIdGenerator'
+
 
 const ToDoState = () => ({
     todoState: [],
-    editTodoState: {}
+    editTodoState: {},
 })
 
 const initialState = ToDoState();
 
-var nextTodoId = -1;
-
 export function addTodo(text) {
-    nextTodoId = nextTodoId+1;
+    var id = randIdGen();
+    //nextTodoId = nextTodoId+1;
     return {
         type: ADD_TODO,
         payload: {
             text:text,
-            id: nextTodoId
+            id: id
         }
     }
 }
 
 export function removeTodo(index){
-    nextTodoId = nextTodoId-1;
+    //nextTodoId = nextTodoId-1;
     return {
         type: REMOVE_TODO,
         payload: index
@@ -47,24 +48,31 @@ export function submitEditTodo(todo){
     }
 }
 
-// updateTodoItem = (array, action) =>{
-//     return array.map( (item, index) => {
-//         if(index !== action.payload.id) {
-//             // This isn't the item we care about - keep it as-is
-//             console.log("Not the item that needs to change: "+JSON.stringify(item));
-//         }else{
-//             console.log("This is the item that needs to change :"+JSON.stringify(item));
-//             return {
-//                     ...item,
-//                     ...action.payload
-//             };                  
-//         }
-//         // Otherwise, this is the one we want - return an updated value
-//         // return {
-//         //     // ...item,
-//         //     // ...action.payload
-//         // }; 
-//     });
+updateTodoItem = (array, action) =>{
+    return array.map( (item) => {
+        if(item.id !== action.payload.id) {
+            // This isn't the item we care about - keep it as-is
+            console.log("Not the item that needs to change: "+JSON.stringify(item));
+            return item
+        }
+
+        console.log("This is the item that needs to change :"+JSON.stringify(item)+" to "+JSON.stringify(action.payload));
+            return {
+                    ...item,
+                    ...action.payload
+            };                  
+        // Otherwise, this is the one we want - return an updated value
+        // return {
+        //     // ...item,
+        //     // ...action.payload
+        // }; 
+    });
+}
+
+// for(var i = 0; i<state.todoState.length; i++){
+//     if(state.todoState[i].id === payload.id){
+//         return payload.text
+//     }
 // }
 
 
@@ -106,7 +114,7 @@ export default function ToDoStateReducer(state = initialState, action) {
             //var newTodoState = state.todoState.splice(action.payload.id, 0, action.payload)
             return{
                 ...state,
-                todoState: state.todoState.slice(0, action.payload.id).concat([action.payload]).concat(state.todoState.slice(action.payload.id+1))
+                 todoState: updateTodoItem(state.todoState, action)//state.todoState.slice(0,action.payload.id).concat([action.payload]).concat(state.todoState.slice(action.payload.id+1))
 
             }      
         }
