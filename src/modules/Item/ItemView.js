@@ -15,8 +15,6 @@ import {
 
 export default class ItemView extends Component {
 
-
-
     constructor(props) {
         super(props);
         this.state = {
@@ -24,6 +22,7 @@ export default class ItemView extends Component {
         }
         console.log(props)
         console.log(props.editTodoState)
+        // console.log(props.todo.id)
         //console.log(props.todoState.text)
         //console.log(this.state.todoText)
     }
