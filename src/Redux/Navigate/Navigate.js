@@ -26,24 +26,25 @@ function select(state) {
     return state.navigationState
 }
 
+let navigationState;
 function handleChange() {
-    let navigationState = select(store.getState());
+    let prevNavState = navigationState;
+    navigationState = select(store.getState());
 
     console.log(navigationState);
-
-    if(navigationState === undefined){
-        startApp()
-    } else {
-        //console.log(navigationState.navigationState.index)
-        if (navigationState.navigationState.index === 1) {
-            pushNav(navigationState.navigationState);
-        } else if(navigationState.navigationState.index === 0){
-            popNav(navigationState.navigationState)
+    if (prevNavState != navigationState) {
+        if (navigationState === undefined) {
+            startApp()
+        } else {
+            //console.log(navigationState.navigationState.index)
+            if (navigationState.navigationState.index === 1) {
+                pushNav(navigationState.navigationState);
+            } else if (navigationState.navigationState.index === 0) {
+                popNav(navigationState.navigationState)
+            }
         }
     }
 
-    
-    
 }
 
 function navigateListener() {

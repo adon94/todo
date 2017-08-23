@@ -1,4 +1,5 @@
 import { loop, cmd} from 'redux-loop'
+import randIdKey from '../../utils/randidGen'
 
     /*      Actions     */
 
@@ -17,12 +18,12 @@ const initialState = ToDoState();
 let nextTodoId = 0;
 
 export function addTodo(text) {
-    nextTodoId = nextTodoId + 1;
+var id = randIdKey()
     return {
         type: ADD_TODO,
         payload: {
             text: text,
-            id: nextTodoId
+            id: id
         }
 
     }
@@ -46,6 +47,27 @@ export function submitEditTodo(todo) {
         type: SUBMIT_EDIT_TODO,
         payload: todo
     }
+}
+
+export function updateTodoItem(array, action){
+    return array.map( (item) => {
+        if(item.id !== action.payload.id) {
+            // This isn't the item we care about - keep it as-is
+            console.log("Not the item that needs to change: "+JSON.stringify(item));
+            return item
+        }
+
+        console.log("This is the item that needs to change :"+JSON.stringify(item)+" to "+JSON.stringify(action.payload));
+            return {
+                    ...item,
+                    ...action.payload
+            };                  
+        // Otherwise, this is the one we want - return an updated value
+        // return {
+        //     // ...item,
+        //     // ...action.payload
+        // }; 
+    });
 }
 
 export default function ToDoStateReducer(state = initialState, action) {
@@ -73,7 +95,8 @@ export default function ToDoStateReducer(state = initialState, action) {
         case SUBMIT_EDIT_TODO: {
             console.log(action.payload)
             return{
-                ...state
+                ...state,
+                todoState: updateTodoItem(state.todoState, action)
             }
         }
         // case EDIT_TODO: {
