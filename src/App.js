@@ -6,7 +6,9 @@ import { registerScreens } from './RegisterScreens';
 import  store  from './Redux/Store';
 import ToDoView from './modules/ToDo/ToDoView';
 import reducer from './Redux/Reducer'
+import navigateListener from './Redux/Navigate/Navigate'
 
+navigateListener();
 registerScreens();
 
 Navigation.startSingleScreenApp({

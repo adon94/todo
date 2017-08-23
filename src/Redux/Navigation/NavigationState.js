@@ -1,12 +1,10 @@
-import { pushNav, popNav } from '../Navigate/Navigate'
+import { pushNav, popNav, unsubscribe } from '../Navigate/Navigate'
 import { loop, Cmd } from 'redux-loop'
 import * as constants from '../../const'
 
 
 const NavigationState = () => ({
-    navigationState: [],
-    //currentScreen: undefined
-    key: constants
+    navigationState: []
 })
 
 const initialState = NavigationState();
@@ -31,25 +29,27 @@ export function navigatePop(props) {
     }
 }
 
+
 export default function NavigationStateReducer(state = initialState, action) {
     switch (action.type) {
-        case "NAV_PUSH": 
-        //if(currentScreen === action.payload.screenId) return state;
+        case "NAV_PUSH":
+            //if(currentScreen === action.payload.screenId) return state;
             console.log(action.payload)
+            return (
+                {
+                    ...state,
+                    navigationState: {
+                        screen: action.payload.screenId,
+                        props: action.payload.props
+                    }
+                }
+            )
+        case "NAV_POP":
+            console.log(state)
             return loop(
-                {...state,
-                    navigationState: state.navigationState.currentScreen === action.payload.screenId,
-                   // currentScreen: action.payload.props.testId
-            },
-            Cmd.run(pushNav, {args: [action.payload]
-        })
-    )
-    case "NAV_POP":
-    console.log(state)
-    return loop(
-            {...state},
-        Cmd.run(popNav, { args: [action.payload.props]})
-    )
+                { ...state },
+                // Cmd.run(popNav, { args: [action.payload.props]})
+            )
         default: {
             return state
         }
