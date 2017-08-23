@@ -52,7 +52,8 @@ export default class ToDoView extends Component {
         this.props.navigator.push({
             screen: 'app.EditToDoView'
         });
-        this.props.editTodo(todo);
+        this.props.edit(todo);
+        //this.props.edit(todo);
     }
 
     renderSeparator = () => {

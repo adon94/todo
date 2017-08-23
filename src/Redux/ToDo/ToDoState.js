@@ -35,6 +35,7 @@ export function removeTodo(index){
 }
 
 export function editTodo(todo){
+    console.log(todo);
     return {
         type: EDIT_TODO,
         payload: todo

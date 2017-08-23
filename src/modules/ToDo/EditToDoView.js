@@ -27,6 +27,7 @@ export default class EditToDoView extends Component {
     }
 
     toDoEditInput = (text) => {
+        console.log(text);
         this.setState({
             editTodoText:text
         })
@@ -41,7 +42,7 @@ export default class EditToDoView extends Component {
         this.props.navigator.pop({
             animated: true, // does the pop have transition animation or does it happen immediately (optional)
             animationType: 'fade', // 'fade' (for both) / 'slide-horizontal' (for android) does the pop have different transition animation (optional)
-          });
+        });
     }
 
     returnTodoState = () => {

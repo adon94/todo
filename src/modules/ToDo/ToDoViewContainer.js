@@ -5,14 +5,19 @@ import {
     removeTodo,
     editTodo
  } from '../../Redux/ToDo/ToDoState';
+ import {
+     navigatePush
+ } from '../../Redux/Navigation/NavigationState';
 
 export default connect(
     (state, props) => ({
         ...state.todoState
     }),
-    dispatch => ({
+    (dispatch, props) => ({
         addTodo: (text) => dispatch(addTodo(text)),
         removeTodo: (index) => dispatch(removeTodo(index)),
-        editTodo: (todo) => dispatch(editTodo(todo))        
+        //navigatePush: (props, screenId, title) => dispatch(navigatePush(props, screenId, title)),
+        //editTodo: (todo) => dispatch(editTodo(todo))
+        edit: (todo) => dispatch(editTodo(todo))
     })
 )(ToDoView)
