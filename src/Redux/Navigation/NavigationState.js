@@ -1,11 +1,11 @@
 import { pushNav, popNav } from '../Navigate/Navigate'
 import { loop, Cmd } from 'redux-loop'
-import * as constants from '../../const'
 
 const NavigationState = () => ({
     navigationState: {
         screen: 'app.ToDoView',
-        props: null
+        props: null,
+        index: undefined
     }
 })
 
@@ -25,9 +25,7 @@ export function navigatePush(props, screenId, title) {
 export function navigatePop(props) {
     return {
         type: "NAV_POP",
-        payload: {
-            props: props
-        }
+        payload: props
     }
 }
 
@@ -38,14 +36,18 @@ export default function NavigationStateReducer(state = initialState, action) {
                 ...state,
                 navigationState: {
                     screen: action.payload.screenId,
-                    props: action.payload.props
+                    props: action.payload.props,
+                    index: 1
                 }
             }
         case "NAV_POP":
-            return loop(
-                { ...state },
-                Cmd.run(popNav, { args: [action.payload.props] })
-            )
+            return {
+                ...state,
+                navigationState: {
+                    props: action.payload,
+                    index: 0
+                }
+            }
         default: {
             return state
         }

@@ -1,19 +1,19 @@
 import store from '../Store'
+import { Navigation } from 'react-native-navigation';
 
 function pushNav(payload) {
     console.log("inside push nav")
-    console.log(payload.props)
     payload.props.navigator.push({
         screen: payload.screen
     })
 }
 
-function popNav(props) {
+function popNav(payload) {
     console.log("pop nav")
-    props.navigator.pop()
+    payload.props.navigator.pop()
 }
 
-function startApp(initialState) {
+function startApp() {
     Navigation.startSingleScreenApp({
         screen: {
             screen: 'app.ToDoView',
@@ -30,12 +30,20 @@ function handleChange() {
     let navigationState = select(store.getState());
 
     console.log(navigationState);
-    console.log(navigationState.navigationState.props);
-    if (navigationState.navigationState.props != null) {
-        pushNav(navigationState.navigationState);
+
+    if(navigationState === undefined){
+        startApp()
     } else {
-        console.log("Tims logger")
+        //console.log(navigationState.navigationState.index)
+        if (navigationState.navigationState.index === 1) {
+            pushNav(navigationState.navigationState);
+        } else if(navigationState.navigationState.index === 0){
+            popNav(navigationState.navigationState)
+        }
     }
+
+    
+    
 }
 
 function navigateListener() {
