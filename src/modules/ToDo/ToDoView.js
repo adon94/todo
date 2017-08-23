@@ -48,7 +48,8 @@ export default class ToDoView extends Component {
     }
 
     editItem = (todo) => {
-        this.props.navigatePush(this.props, 'app.ItemView', 'Item', todo);
+        this.props.edit(todo, this.props,'app.ItemView', 'Item')
+        
     }
 
     renderSeparator = () => {
