@@ -10,6 +10,7 @@ export default connect(
     (dispatch, props) => ({
         return: (props) => { dispatch(navigatePop(props)) },
         removeTodo: (index) => dispatch(removeTodo(index)),
-        submitEdit: (editedTodo) => dispatch(submitEditTodo(editedTodo))
+        submitEdit: (editedTodo) => dispatch(submitEditTodo(editedTodo)),
+        push:(props, screenId, title) => dispatch(navigatePush(props, screenId, title))
     })
 )(ItemView)

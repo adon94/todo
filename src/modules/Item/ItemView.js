@@ -51,6 +51,10 @@ export default class ItemView extends Component {
         this.props.removeTodo(index);
     }
 
+    push = (todo) => {
+        this.props.push(this.props,'app.AnotherPage', 'Another Page')
+    }
+
     render() {
         return(
             <View>
@@ -59,6 +63,7 @@ export default class ItemView extends Component {
                 <Button title="Delete" onPress={this.removeTodo}/>  
                 <Button title="Return"
                 onPress={this.popNavigation}/>  
+                <Button title="Pop on" onPress={this.push}/>  
             </View>
         )
     }
