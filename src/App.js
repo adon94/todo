@@ -1,4 +1,3 @@
-
 import React from 'react'; // eslint-disable-line
 import { Provider } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
@@ -10,6 +9,7 @@ import navigateListener from './Redux/Navigate/Navigate'
 
 navigateListener();
 registerScreens();
+navigateListener();
 
 Navigation.startSingleScreenApp({
 	screen: {
