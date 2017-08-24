@@ -1,5 +1,12 @@
-import { pushNav, popNav, unsubscribe } from '../Navigate/Navigate'
-import { loop, Cmd } from 'redux-loop'
+import { 
+    pushNav, 
+    popNav, 
+    unsubscribe 
+} from '../Navigate/Navigate'
+import { 
+    loop, 
+    Cmd 
+} from 'redux-loop'
 
 const NavigationState = () => ({
     navigationState: {
