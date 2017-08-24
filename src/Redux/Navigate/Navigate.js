@@ -1,23 +1,13 @@
 import store from '../Store'
-<<<<<<< HEAD
-
-export function pushNav(payload) {
-=======
 import { Navigation } from 'react-native-navigation';
 
 function pushNav(payload) {
->>>>>>> timsbranch
     console.log("inside push nav")
     payload.props.navigator.push({
         screen: payload.screen
     })
 }
 
-<<<<<<< HEAD
-export function popNav(props) {
-    console.log("pop nav")
-    props.navigator.pop()
-=======
 function popNav(payload) {
     console.log("pop nav")
     payload.props.navigator.pop()
@@ -30,23 +20,12 @@ function startApp() {
             title: 'To Do List',
         },
     });
->>>>>>> timsbranch
 }
 
 function select(state) {
     return state.navigationState
 }
 
-<<<<<<< HEAD
-function handleChange() {
-    console.log(select(store.getState()));
-}
-
-export default function navigateListener() {
-    store.subscribe(handleChange)
-}
-
-=======
 let navigationState;
 function handleChange() {
     let prevNavState = navigationState;
@@ -73,4 +52,3 @@ function navigateListener() {
 }
 
 export default navigateListener;
->>>>>>> timsbranch
